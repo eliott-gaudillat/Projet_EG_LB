@@ -5,25 +5,52 @@
 /*
   Voir les TPs, = libentrée, sauf qu'on lit dans un fichier f
  */
-void
-lire_donnee ( FILE * f , char * format , void * res )
-{
-}
 
+void lire_donnee ( FILE * f , char * format , void * res )
+{
+    int lu = 0 ;
+    int count = 0 ;
+    char c ;
+    do
+    {
+        lu = fscanf (f,format , res ) ;
+        do {
+            c = getc ( f ) ;
+            if ( ! isspace ( c ) )
+                count ++ ;
+        } while (! feof(f) && ( c != '\n' )) ;
+        
+    }
+    while ((lu != 1) || (count > 0) && ! feof(f) );
+  
+}
+  
 int lire_entier ( FILE * f )
 {
-  return 0 ;
+  int res
+  lire_donnee(f,"%d", &res) ;
+  return res ;
 }
+
+
 int lire_entier_intervalle ( FILE * f , int min, int max )
 {
   return 0 ;
 }
+
+
 float lire_float ( FILE * f )
 {
-  return 0 ;
+  float res;
+  lire_donnee(f, " %f", &res);
+  return res;  
 }
+
+
 char * lire_string ( FILE * f)
 {
+  char res;
+  lire_donnee(f, " %s", &res);
   return NULL ;
 }
 /*
