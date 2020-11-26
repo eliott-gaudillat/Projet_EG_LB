@@ -8,7 +8,6 @@
 void
 lire_donnee ( FILE * f , char * format , void * res )
 {
-  
 }
 
 int lire_entier ( FILE * f )
