@@ -21,20 +21,24 @@ void lire_donnee ( FILE * f , char * format , void * res )
         } while (! feof(f) && ( c != '\n' )) ;
         
     }
-    while ((lu != 1) || (count > 0) && ! feof(f) );
+    while ( ( ! feof(f))  &&( (lu != 1) || (count > 0))  );
   
 }
   
 int lire_entier ( FILE * f )
 {
-  int res
+  int res ;
   lire_donnee(f,"%d", &res) ;
   return res ;
 }
 
 
-int lire_entier_intervalle ( FILE * f , int min, int max )
+int lire_entier_intervalle ( FILE * f , int min, int max ) // on part du principe que min est bien inférieur à max 
 {
+  int lu ;
+  do {
+      lu = lire_entier(f);
+  } while( !(( lu >= min) && (lu < max))) ;
   return 0 ;
 }
 
