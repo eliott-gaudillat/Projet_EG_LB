@@ -6,11 +6,11 @@
 */
 int nb_lignes ( struct matrice_s * m )
 {
-  return (m->nb_lignes);
+  return (m->nb_lignes); //On recupere le nombre de ligne de la matrice
 }
 int nb_cols ( struct matrice_s * m )
 {
-  return (m->nb_cols);
+  return (m->nb_cols); //On recupere le nombre de colones de la matrice
 }
 
 int matrice_set (struct matrice_s * m, int num_ligne , int num_colonne, float value) //On met la valeur
@@ -25,7 +25,7 @@ int matrice_get(struct matrice_s * m, int num_ligne, int num_colonne , float * v
   return 0 ;
 }
 
-float *** matrice_raw(struct matrice_s * m )
+float *** matrice_raw(struct matrice_s * m ) 
 {
   return (&(m->matrice));
 }
