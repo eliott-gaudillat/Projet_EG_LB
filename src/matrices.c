@@ -92,7 +92,7 @@ int lire_matrice_fichier ( FILE * f , struct matrice_s * * m )
 {
   int nb_lignes=0, nb_colonnes=0;
   float case_m=0;
-  if ( f == NULL)
+  if ( f == NULL) //On verifie que le fichier a bien pu etre ouvert
   {
     printf("ERREUR Impossible de lire le fichier");
   }
@@ -144,7 +144,7 @@ void affiche_matrice ( struct matrice_s * m )
     {
       for (int j=0; j<(m->nb_cols) ; j++)
       {
-        printf("%f ",m->matrice[i][j]); 
+        printf("%f ",m->matrice[i][j]);  //On affiche la valeur situé dans la matrice à la ligne i et colone j
       }
       printf("\n"); //On change de Ligne
     }
@@ -161,7 +161,7 @@ int copie_matrice( struct matrice_s * m1, struct matrice_s * m2 )
     {
       for (int j=0; j<(m1->nb_cols) ; j++)
       {
-       m2->matrice[i][j] = m1->matrice[i][j]; 
+       m2->matrice[i][j] = m1->matrice[i][j];  //On atribue la valeur de la matrice 1 ligne i colone j à la meme place dans la matrice 2
       }
     }
   return 0 ;
