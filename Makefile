@@ -24,7 +24,9 @@ test:	bin/apprentissage bin/evaluation
 	./bin/apprentissage tests/fonction_lineaire.csv < tests/input_lineaire.txt
 	./bin/evaluation tests/fonction_lineaire.csv
 
-
+test: bin/apprentissage bin/evaluation
+	./bin/apprentissage tests/fonction_lineaire.csv < tests/input_lineaire.txt
+	./bin/evaluation tests/fonction_lineaire.csv
 
 clean:
 	find bin -maxdepth 1 -type f -exec \rm {} \;
