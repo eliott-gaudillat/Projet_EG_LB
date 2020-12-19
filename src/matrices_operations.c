@@ -10,6 +10,20 @@ int transpose_matrice(
 		      struct matrice_s * m1,
 		      struct matrice_s * m2 )
 {
+	int i , j ;
+	
+	i= m1->nb_lignes ;
+	j= m1->nb_cols ;
+	
+	for ( int compteur_lignes = 1 ; compteur_lignes <= i ; compteur_lignes++)
+		{
+			for ( int compteur_cols = 1 ; compteur_cols <= j ;compteur_cols++)
+				{
+					m2->matrice[j][i] = m1->matrice[i][j] ; // Transposition : B(i,j) = A(i,j)
+				}
+		}
+	
+	return 0 ;
 	
 }
 
@@ -23,6 +37,17 @@ int addition_matrice_scalaire(
 			      float mu ) 
 {
   int  i , j ;
+  i= m1->nb_lignes ;
+	j= m1->nb_cols ;
+	
+		for ( int compteur_lignes = 1 ; compteur_lignes <= i ; compteur_lignes++)
+		{
+			for ( int compteur_cols = 1 ; compteur_cols <= j ;compteur_cols++)
+				{
+					m3->matrice[i][j] = mu * ( m1->matrice[i][j] + m2->matrice[i][j] ) ;  // addition : C(i,j)= ß *( A(i,j) + b(i,j))
+				}
+		}
+	
   return 0 ;
 }
 /*
@@ -39,8 +64,25 @@ int addition_matrice_scalaire(
 int multiplication_matrice(
 			   struct matrice_s * m1,
 			   struct matrice_s * m2,
-			   struct matrice_s * m3 )
+			   struct matrice_s * m3 ) 
 {
+	int i , j , p , somme ;
+	i = m1->nb_lignes ;
+	j = m2->nb_cols ;
+	p = m1->nb_cols ;
+		for ( int compteur_lignes = 1 ; compteur_lignes <= i ; compteur_lignes++)
+		{
+			for ( int compteur_cols = 1 ; compteur_cols <= j ;compteur_cols++)
+			{
+				somme = 0 ;
+				for (int k = 1 ; k <= p ; k++ )
+				{
+					// multiplication : C(i,j) = somme( de k=1 a p) de [ A(i,k) * B(k,j) ] ou p est le nombre de colonne de m1 et aussi nombre lignes de m2
+					somme = somme + ( m1->matrice[i][k] * m2->matrice[k][j] ) ; 
+				}
+				m3->matrice[i][j] = somme ;
+			}
+		}
   return 0 ;
 }
 

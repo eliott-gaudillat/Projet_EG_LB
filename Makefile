@@ -19,6 +19,10 @@ bin/evaluation: src/main_evaluation.c $(MODULES_EVALUATION)
 
 lib/%.o: src/%.c 
 	gcc $(CFLAGS) -c $< -o $@ 
+	
+test:	bin/apprentissage bin/evaluation
+	./bin/apprentissage tests/fonction_lineaire.csv < tests/input_lineaire.txt
+	./bin/evaluation tests/fonction_lineaire.csv
 
 
 
